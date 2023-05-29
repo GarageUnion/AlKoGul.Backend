@@ -14,10 +14,14 @@ namespace UserProfileService
         public async Task<User> CreateUser(CreateUserRequest createUserRequest)
         {
             User newUser = new User { Name = createUserRequest.UserName, Email = createUserRequest.Email, RegistrationDate = DateTime.Now };
-
-            _dbContext.Users.Add(newUser);
-            await _dbContext.SaveChangesAsync();
-            return newUser;
+            var userWithThisEmail = await _dbContext.Users.FirstOrDefaultAsync(x => x.Email == newUser.Email);
+            if (userWithThisEmail == null)
+            {
+                _dbContext.Users.Add(newUser);
+                await _dbContext.SaveChangesAsync();
+                return newUser;
+            }
+            else return null;
         }
 
         public async Task<User> DeleteUser(int id)

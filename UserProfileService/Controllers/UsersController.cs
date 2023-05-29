@@ -22,12 +22,12 @@ namespace UserProfileService
         {
             return await _usersManager.DeleteUser(id);
         }
-        [HttpGet]
+        [HttpGet("many")]
         public async Task<List<User>> GetUsers()
         {
             return await _usersManager.Get();
         }
-        [HttpGet("{id:int}")]
+        [HttpGet("one/{id:int}")]
         public async Task<User> GetUserById([FromRoute]int id)
         {
             return await _usersManager.GetById(id);
