@@ -10,7 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<UsersContext>(options =>
-                options.UseNpgsql("Host=localhost;Port=5432;Database=AlcoDB;Username=postgres;Password=boberman"));
+                options.UseNpgsql("Host=hattie.db.elephantsql.com;Port=5432;Database=rlxecvyi;Username=rlxecvyi;Password=XnTYL31vCfvzyNPkZ32kF6FHZ0FjZ9v4"));
+//"Host=localhost;Port=5432;Database=AlcoDB;Username=postgres;Password=boberman"
 
 builder.Services.AddScoped<IUsersManager, UsersManager>();
 var app = builder.Build();
