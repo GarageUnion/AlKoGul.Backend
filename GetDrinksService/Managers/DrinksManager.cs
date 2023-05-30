@@ -33,6 +33,10 @@ namespace DrinksService
             var drink = _dbContext.Drinks.FirstOrDefault((x => x.Id == id));
             if (drink != null)
             {
+                if (File.Exists("Images/"+drink.Id))
+                {
+                    File.Delete("Images/" + drink.Id);
+                }
                 _dbContext.Drinks.Remove(drink);
                 await _dbContext.SaveChangesAsync();
                 return drink;

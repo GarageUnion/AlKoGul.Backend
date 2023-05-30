@@ -15,6 +15,7 @@ builder.Services.AddControllersWithViews()
     .AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
+builder.Services.AddScoped<IPicturesManager,PicturesManager>();
 builder.Services.AddScoped<IDrinksManager, DrinksManager>();
 builder.Services.AddScoped<IDrinkReviewsManager, DrinkReviewManager>();
 var app = builder.Build();
