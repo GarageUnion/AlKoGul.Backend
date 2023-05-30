@@ -1,69 +1,69 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata.Ecma335;
 
-namespace DrinksService
+namespace BreadService
 {
-    public class DrinkReviewManager : IDrinkReviewsManager
+    public class BreadReviewManager : IBreadReviewsManager
     {
         private readonly DataContext _dbContext;
-        private void CalculateDrinkRate(Drink reviewedDrink)
+        private void CalculateBreadRate(Bread reviewedBread)
         {
             var allReviews = _dbContext.Reviews.ToList();
-            var reviews = allReviews.Where(x => x.Drink == reviewedDrink).ToList();
+            var reviews = allReviews.Where(x => x.Bread == reviewedBread).ToList();
             if (reviews.Count == 0)
             {
-                reviewedDrink.Rate = 0;
+                reviewedBread.Rate = 0;
             }
             else
             {
-                reviewedDrink.Rate = (double)(reviews.Sum(x => x.Rate) / (double)reviews.Count);
+                reviewedBread.Rate = (double)(reviews.Sum(x => x.Rate) / (double)reviews.Count);
             }  
         }
-        public DrinkReviewManager(DataContext dbContext)
+        public BreadReviewManager(DataContext dbContext)
         {
             _dbContext = dbContext;
         }
-        public async Task<DrinkReview> CreateReview(DrinkReviewRequest createRequest)
+        public async Task<BreadReview> CreateReview(BreadReviewRequest createRequest)
         {
-            var reviewedDrink = _dbContext.Drinks.FirstOrDefault((x => x.Id == createRequest.DrinkId));
-            if (reviewedDrink != null)
+            var reviewedBread = _dbContext.Bread.FirstOrDefault((x => x.Id == createRequest.BreadId));
+            if (reviewedBread != null)
             {
 
-                DrinkReview drinkReview = new DrinkReview()
+                BreadReview breadReview = new BreadReview()
                 {
-                    Drink = reviewedDrink,
+                    Bread = reviewedBread,
                     Rate = createRequest.Rate,
                     Review = createRequest.Review,
                     UserId = createRequest.UserId
                 };
-                _dbContext.Reviews.Add(drinkReview);
+                _dbContext.Reviews.Add(breadReview);
                 await _dbContext.SaveChangesAsync();
-                CalculateDrinkRate(reviewedDrink);
+                CalculateBreadRate(reviewedBread);
                 await _dbContext.SaveChangesAsync();
-                return drinkReview;
+                return breadReview;
             }
             else return null;
         }
 
-        public async Task<DrinkReview> DeleteReview(int id)
+        public async Task<BreadReview> DeleteReview(int id)
         {
             var review = _dbContext.Reviews.FirstOrDefault((x => x.Id == id));
             if (review != null)
             {
-                var reviewedDrink = review.Drink;
+                var reviewedBread = review.Bread;
                 _dbContext.Reviews.Remove(review);
                 await _dbContext.SaveChangesAsync();
-                CalculateDrinkRate(reviewedDrink);
+                CalculateBreadRate(reviewedBread);
                 await _dbContext.SaveChangesAsync();
                 return review;
             }
             else return null;
         }
 
-        public async Task<List<DrinkReview>> GetGyDrink(int drinkId)
+        public async Task<List<BreadReview>> GetGyBread(int breadId)
         {
             var allReviews = await _dbContext.Reviews.ToListAsync();
-            var reviews = allReviews.Where(x => x.Drink.Id == drinkId).ToList();
+            var reviews = allReviews.Where(x => x.Bread.Id == breadId).ToList();
             if (reviews.Any())
             {
                 return reviews;

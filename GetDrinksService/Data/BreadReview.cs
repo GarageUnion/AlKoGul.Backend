@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DrinksService
+namespace BreadService
 {
-    [Table("tblDrinkReviews")]
-    public class DrinkReview
+    [Table("tblBreadReviews")]
+    public class BreadReview
     {
         [Key]
         public int Id { get; set; }
@@ -15,7 +15,7 @@ namespace DrinksService
         [Required]
         public int UserId { get; set; }
 
-        public virtual Drink Drink { get; set; }
+        public virtual Bread Bread { get; set; }
 
     }
 }

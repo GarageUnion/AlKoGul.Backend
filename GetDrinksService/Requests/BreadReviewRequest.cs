@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 
-namespace DrinksService 
+namespace BreadService 
 {
-    public class DrinkReviewRequest
+    public class BreadReviewRequest
     {
         public string Review { get; set; }
         public int Rate { get; set; }
-        public int DrinkId { get; set; }
+        public int BreadId { get; set; }
         public int UserId { get; set; }
     }
 }

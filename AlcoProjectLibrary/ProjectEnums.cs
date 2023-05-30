@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlcoProjectLibrary
+namespace BreadProjectLibrary
 {
     static public class ProjectEnums
     {
-        public enum DrinkCategory
+        public enum BreadCategory
         {
             Other,
-            Beer,
-            LightDrink,
-            Vine,
-            Liquor,
-            StrongDrink,
+            WhiteBread,
+            BlackBread,
+            Pie,
+            Bun,
+            Cake,
         }
     }
 }

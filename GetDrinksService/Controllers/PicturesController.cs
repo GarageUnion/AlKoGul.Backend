@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DrinksService.Controllers
+namespace BreadService.Controllers
 {
     [Route("[controller]")]
     [ApiController]

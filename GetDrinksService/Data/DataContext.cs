@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 
-namespace DrinksService
+namespace BreadService
 {
     public class DataContext:DbContext
     {
-        public DbSet<Drink> Drinks { get; set; }
-        public DbSet<DrinkReview> Reviews { get; set; }
+        public DbSet<Bread> Bread { get; set; }
+        public DbSet<BreadReview> Reviews { get; set; }
         public DataContext(DbContextOptions<DataContext> options)
         : base(options)
         {
@@ -21,9 +21,9 @@ namespace DrinksService
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Drink>()
-                .HasMany(x => x.drinkReviews)
-                .WithOne(x => x.Drink);
+            modelBuilder.Entity<Bread>()
+                .HasMany(x => x.breadReviews)
+                .WithOne(x => x.Bread);
         }
     }
 }

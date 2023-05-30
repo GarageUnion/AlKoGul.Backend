@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using AlcoProjectLibrary;
-namespace DrinksService
+using BreadProjectLibrary;
+namespace BreadService
 {
-    [Table("tblDrinks")]
-    public class Drink
+    [Table("tblBread")]
+    public class Bread
     {
         // Свойства класса будут трасформированы в столбцы в таблице
 
@@ -17,10 +17,10 @@ namespace DrinksService
         public string Name { get; set; }
 
         [Required]
-        public double Strength { get; set; }
+        public double Price { get; set; }
 
         [Required]
-        public ProjectEnums.DrinkCategory Category { get; set; }
+        public ProjectEnums.BreadCategory Category { get; set; }
 
         [Required]
         public string Description { get; set; }
@@ -28,7 +28,7 @@ namespace DrinksService
         [Required]
         public double Rate { get; set; }
 
-        public virtual List<DrinkReview> drinkReviews { get; set; }
+        public virtual List<BreadReview> breadReviews { get; set; }
     }
 }
 

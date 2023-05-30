@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using DrinksService;
+using BreadService;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,8 +16,8 @@ builder.Services.AddControllersWithViews()
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
 builder.Services.AddScoped<IPicturesManager,PicturesManager>();
-builder.Services.AddScoped<IDrinksManager, DrinksManager>();
-builder.Services.AddScoped<IDrinkReviewsManager, DrinkReviewManager>();
+builder.Services.AddScoped<IBreadManager, BreadManager>();
+builder.Services.AddScoped<IBreadReviewsManager, BreadReviewManager>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

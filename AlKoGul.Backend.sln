@@ -5,13 +5,13 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminService", "AdminService\AdminService.csproj", "{4DCE773F-7657-480F-93E3-49ADBCF56E89}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrinksService", "GetDrinksService\DrinksService.csproj", "{6D13052D-C90F-4D58-8B7E-85220496D05A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BreadService", "GetDrinksService\BreadService.csproj", "{6D13052D-C90F-4D58-8B7E-85220496D05A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoctailsService", "RecipesService\CoctailsService.csproj", "{C71B9208-C2B2-460D-A86B-C8F86A491F40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PiesService", "RecipesService\PiesService.csproj", "{C71B9208-C2B2-460D-A86B-C8F86A491F40}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserProfileService", "UserProfileService\UserProfileService.csproj", "{C6C43451-704B-4A95-847C-88300BB8A001}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoonshineService", "MoonshineService\MoonshineService.csproj", "{43674E2E-0990-4FB3-9A12-AAC7FECF0014}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CraftBreadService", "MoonshineService\CraftBreadService.csproj", "{43674E2E-0990-4FB3-9A12-AAC7FECF0014}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2665C7C1-0968-4D84-9215-A8F6F98D6AF7}"
 	ProjectSection(SolutionItems) = preProject

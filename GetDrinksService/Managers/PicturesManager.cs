@@ -1,5 +1,5 @@
 ﻿using System.IO;
-namespace DrinksService
+namespace BreadService
 {
     public class PicturesManager : IPicturesManager
     {
@@ -35,7 +35,7 @@ namespace DrinksService
 
         public async Task<bool> PostPicture(Picture picture)
         {
-            if (_dbContext.Drinks.FirstOrDefault(x => x.Id == picture.Id) != null)
+            if (_dbContext.Bread.FirstOrDefault(x => x.Id == picture.Id) != null)
             {
                 await File.WriteAllTextAsync("Images/" + picture.Id, picture.DataBase64);
                 return true;

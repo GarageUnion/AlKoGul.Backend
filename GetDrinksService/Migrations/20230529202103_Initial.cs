@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace DrinksService.Migrations
+namespace BreadService.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
