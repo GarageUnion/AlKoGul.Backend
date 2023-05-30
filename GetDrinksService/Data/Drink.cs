@@ -28,7 +28,7 @@ namespace DrinksService
         [Required]
         public double Rate { get; set; }
 
-        public List<DrinkReview> drinkReviews { get; set; }
+        public virtual List<DrinkReview> drinkReviews { get; set; }
     }
 }
 

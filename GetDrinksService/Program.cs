@@ -11,7 +11,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(options =>
                 options.UseNpgsql("Host=hattie.db.elephantsql.com;Port=5432;Database=rlxecvyi;Username=rlxecvyi;Password=XnTYL31vCfvzyNPkZ32kF6FHZ0FjZ9v4"));
 //"Host=localhost;Port=5432;Database=AlcoDB;Username=postgres;Password=boberman"
-
+builder.Services.AddControllersWithViews()
+    .AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
 builder.Services.AddScoped<IDrinksManager, DrinksManager>();
 builder.Services.AddScoped<IDrinkReviewsManager, DrinkReviewManager>();
 var app = builder.Build();
