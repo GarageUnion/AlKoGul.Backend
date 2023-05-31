@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlcoProjectLibrary", "AlcoProjectLibrary\AlcoProjectLibrary.csproj", "{9FE8C74A-D1AE-4E24-85E3-78C7C75D24A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BreadProjectLibrary", "AlcoProjectLibrary\BreadProjectLibrary.csproj", "{9FE8C74A-D1AE-4E24-85E3-78C7C75D24A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

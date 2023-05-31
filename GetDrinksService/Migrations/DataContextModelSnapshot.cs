@@ -17,11 +17,14 @@ namespace BreadService.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.5")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("DrinksService.Drink", b =>
+            modelBuilder.Entity("BreadService.Bread", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -41,18 +44,18 @@ namespace BreadService.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
-                    b.Property<double>("Rate")
+                    b.Property<double>("Price")
                         .HasColumnType("double precision");
 
-                    b.Property<double>("Strength")
+                    b.Property<double>("Rate")
                         .HasColumnType("double precision");
 
                     b.HasKey("Id");
 
-                    b.ToTable("tblDrinks");
+                    b.ToTable("tblBread");
                 });
 
-            modelBuilder.Entity("DrinksService.DrinkReview", b =>
+            modelBuilder.Entity("BreadService.BreadReview", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -60,7 +63,7 @@ namespace BreadService.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("DrinkId")
+                    b.Property<int>("BreadId")
                         .HasColumnType("integer");
 
                     b.Property<int>("Rate")
@@ -75,25 +78,25 @@ namespace BreadService.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DrinkId");
+                    b.HasIndex("BreadId");
 
-                    b.ToTable("tblDrinkReviews");
+                    b.ToTable("tblBreadReviews");
                 });
 
-            modelBuilder.Entity("DrinksService.DrinkReview", b =>
+            modelBuilder.Entity("BreadService.BreadReview", b =>
                 {
-                    b.HasOne("DrinksService.Drink", "Drink")
-                        .WithMany("drinkReviews")
-                        .HasForeignKey("DrinkId")
+                    b.HasOne("BreadService.Bread", "Bread")
+                        .WithMany("breadReviews")
+                        .HasForeignKey("BreadId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Drink");
+                    b.Navigation("Bread");
                 });
 
-            modelBuilder.Entity("DrinksService.Drink", b =>
+            modelBuilder.Entity("BreadService.Bread", b =>
                 {
-                    b.Navigation("drinkReviews");
+                    b.Navigation("breadReviews");
                 });
 #pragma warning restore 612, 618
         }
