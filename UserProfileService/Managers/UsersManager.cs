@@ -14,10 +14,9 @@ namespace UserProfileService
         public async Task<User> CheckRegistration(LoginRequest loginRequest)
         {
             var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Email == loginRequest.Email);
-            if (user == null) 
+            if (user != null) 
             {
-                var a = 1;
-                if (loginRequest.Password.Clone == user.Password.Clone)
+                if (loginRequest.Password == user.Password)
                 {
                     return user;
                 }
