@@ -16,6 +16,7 @@ builder.Services.AddControllersWithViews()
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
 builder.Services.AddScoped<IRecipesManager, RecipesManager>();
+builder.Services.AddScoped<IRecipeReviewsManager, RecipeReviewsManager>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
