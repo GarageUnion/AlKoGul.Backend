@@ -11,9 +11,23 @@ namespace UserProfileService
             _dbContext = dbContext;
         }
 
+        public async Task<User> CheckRegistration(LoginRequest loginRequest)
+        {
+            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Email == loginRequest.Email);
+            if (user == null) 
+            {
+                var a = 1;
+                if (loginRequest.Password.Clone == user.Password.Clone)
+                {
+                    return user;
+                }
+            }
+            return null;
+        }
+
         public async Task<User> CreateUser(CreateUserRequest createUserRequest)
         {
-            User newUser = new User { Name = createUserRequest.UserName, Email = createUserRequest.Email, RegistrationDate = DateTime.Now };
+            User newUser = new User { Name = createUserRequest.UserName, Email = createUserRequest.Email, RegistrationDate = DateTime.Now, Password = createUserRequest.Password };
             var userWithThisEmail = await _dbContext.Users.FirstOrDefaultAsync(x => x.Email == newUser.Email);
             if (userWithThisEmail == null)
             {
@@ -39,7 +53,7 @@ namespace UserProfileService
         public async Task<List<User>> Get()
         {
             var users = await _dbContext.Users.ToListAsync();
-            return users.Select(x => new User { Id = x.Id, Name = x.Name, Email = x.Email }).ToList();
+            return users.Select(x => new User { Id = x.Id, Name = x.Name, Email = x.Email, Password = x.Password }).ToList();
         }
 
         public async Task<User> GetById(int id)
@@ -47,7 +61,7 @@ namespace UserProfileService
             var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
             if (user != null)
             {
-                return new User { Id = user.Id, Name = user.Name, Email = user.Email };
+                return new User { Id = user.Id, Name = user.Name, Email = user.Email, Password = user.Password };
             }
             else
                 return null;

@@ -12,8 +12,8 @@ using UserProfileService;
 namespace UserProfileService.Migrations
 {
     [DbContext(typeof(UsersContext))]
-    [Migration("20230525195729_AllGood")]
-    partial class AllGood
+    [Migration("20230531174214_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,6 +41,10 @@ namespace UserProfileService.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("RegistrationDate")
                         .HasColumnType("timestamp without time zone");

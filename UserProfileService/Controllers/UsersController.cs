@@ -32,5 +32,10 @@ namespace UserProfileService
         {
             return await _usersManager.GetById(id);
         }
+        [HttpGet("getUserAfterLogin")]
+        public async Task<User> getUserAfterLogin([FromQuery] LoginRequest request)
+        {
+            return await _usersManager.CheckRegistration(request);
+        }
     }
 }

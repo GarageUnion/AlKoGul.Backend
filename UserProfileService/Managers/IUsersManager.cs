@@ -6,5 +6,6 @@
         Task<User> GetById(int id);
         Task<User> CreateUser(CreateUserRequest createUserRequest);
         Task<User> DeleteUser(int id);
+        Task<User> CheckRegistration(LoginRequest loginRequest);
     }
 }
