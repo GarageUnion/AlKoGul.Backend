@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BreadService.Controllers
+namespace BreadService
 {
     [Route("[controller]")]
     [ApiController]
@@ -12,10 +12,10 @@ namespace BreadService.Controllers
         {
             _reviewsManager = reviewsManager;
         }
-        [HttpGet("{drinkId:int}")]
-        public async Task<List<BreadReview>> GetBreadReviews(int drinkId)
+        [HttpGet("{breadId:int}")]
+        public async Task<List<BreadReview>> GetBreadReviews(int breadId)
         {
-            return await _reviewsManager.GetGyBread(drinkId);
+            return await _reviewsManager.GetGyBread(breadId);
         }
         [HttpPost]
         public async Task<BreadReview> CreateReview([FromBody] BreadReviewRequest createRequest)
