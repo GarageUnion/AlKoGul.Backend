@@ -17,6 +17,7 @@ builder.Services.AddControllersWithViews()
 );
 builder.Services.AddScoped<ICraftBreadManager, CraftBreadManager>();
 builder.Services.AddScoped<ICraftBreadReviewsManager, CraftBreadReviewManager>();
+builder.Services.AddScoped<IPicturesManager, PicturesManager>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
