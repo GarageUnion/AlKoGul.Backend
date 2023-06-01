@@ -16,6 +16,7 @@ builder.Services.AddControllersWithViews()
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
 builder.Services.AddScoped<ICraftBreadManager, CraftBreadManager>();
+builder.Services.AddScoped<ICraftBreadReviewsManager, CraftBreadReviewManager>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
