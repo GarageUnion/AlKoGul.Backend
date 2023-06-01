@@ -29,10 +29,10 @@ namespace PiesService
             var recipe = _dbContext.Recipes.FirstOrDefault((x => x.Id == id));
             if (recipe != null)
             {
-                //if (File.Exists("Images/" + bread.Id))
-                //{
-                //    File.Delete("Images/" + bread.Id);
-                //}
+                if (File.Exists("Images/" + recipe.Id))
+                {
+                    File.Delete("Images/" + recipe.Id);
+                }
                 _dbContext.Recipes.Remove(recipe);
                 await _dbContext.SaveChangesAsync();
                 return recipe;

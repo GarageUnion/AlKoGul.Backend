@@ -17,6 +17,7 @@ builder.Services.AddControllersWithViews()
 );
 builder.Services.AddScoped<IRecipesManager, RecipesManager>();
 builder.Services.AddScoped<IRecipeReviewsManager, RecipeReviewsManager>();
+builder.Services.AddScoped<IPicturesManager, PicturesManager>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
