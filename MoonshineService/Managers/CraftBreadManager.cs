@@ -1,25 +1,22 @@
-﻿using BreadProjectLibrary;
-using Microsoft.EntityFrameworkCore;
-namespace BreadService
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace CraftBreadService
 {
-
-    //ВНИМАНИЕ
-    //ВОЗМОЖЕН БАГ ИЗ-ЗА ПЕРЕДАЧИ ССЫЛКИ НА БД НАПРЯМУЮ
-
-    public class BreadManager : IBreadManager
+    public class CraftBreadManager:ICraftBreadManager
     {
         private readonly DataContext _dbContext;
-        public BreadManager(DataContext dbContext)
+        public CraftBreadManager(DataContext dbContext)
         {
             _dbContext = dbContext;
         }
-        public async Task<Bread> CreateBread(CreateBreadRequest createBreadRequest)
+        public async Task<CraftBread> CreateBread(CreateBreadRequest createBreadRequest)
         {
-            Bread newBread = new Bread {
+            CraftBread newBread = new CraftBread
+            {
                 Name = createBreadRequest.Name,
                 Description = createBreadRequest.Description,
-                Price = createBreadRequest.Price,
-                Category = createBreadRequest.Category,
+                NecessaryProducts = createBreadRequest.NecessaryProducts,
+                IsMachineRequired = createBreadRequest.IsMachineRequired,
                 Rate = 0
             };
             _dbContext.Bread.Add(newBread);
@@ -28,12 +25,12 @@ namespace BreadService
 
         }
 
-        public async Task<Bread> DeleteBread(int id)
+        public async Task<CraftBread> DeleteBread(int id)
         {
             var bread = _dbContext.Bread.FirstOrDefault((x => x.Id == id));
             if (bread != null)
             {
-                if (File.Exists("Images/"+bread.Id))
+                if (File.Exists("Images/" + bread.Id))
                 {
                     File.Delete("Images/" + bread.Id);
                 }
@@ -44,38 +41,27 @@ namespace BreadService
             else return null;
         }
 
-        public async Task<List<Bread>> Get()
+        public async Task<List<CraftBread>> Get()
         {
             var bread = await _dbContext.Bread.ToListAsync();
             return bread;
         }
 
-        public async Task<List<Bread>> GetByCategory(ProjectEnums.BreadCategory category)
-        {
-            var allBread = await _dbContext.Bread.ToListAsync();
-            var bread = allBread.Where(x => x.Category == category).ToList();
-            if (bread.Any())
-            {
-                return bread;
-            }
-            else return null;
-        }
-
-        public async Task<Bread> GetById(int id)
+        public async Task<CraftBread> GetById(int id)
         {
             var bread = await _dbContext.Bread.FirstOrDefaultAsync(x => x.Id == id);
             return bread;
         }
 
-        public async Task<Bread> UpdateBread(UpdateBreadRequest updateBreadRequest)
+        public async Task<CraftBread> UpdateBread(UpdateBreadRequest updateBreadRequest)
         {
             var bread = await _dbContext.Bread.FirstOrDefaultAsync(x => x.Id == updateBreadRequest.Id);
             if (bread != null)
             {
-                bread.Price = updateBreadRequest.Price;
                 bread.Name = updateBreadRequest.Name;
                 bread.Description = updateBreadRequest.Description;
-                bread.Category = updateBreadRequest.Category;
+                bread.IsMachineRequired = updateBreadRequest.IsMachineRequired;
+                bread.NecessaryProducts = updateBreadRequest.NecessaryProducts;
                 _dbContext.Update(bread);
                 await _dbContext.SaveChangesAsync();
                 return bread;
