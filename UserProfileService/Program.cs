@@ -12,7 +12,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<UsersContext>(options =>
                 options.UseNpgsql("Host=hattie.db.elephantsql.com;Port=5432;Database=rlxecvyi;Username=rlxecvyi;Password=XnTYL31vCfvzyNPkZ32kF6FHZ0FjZ9v4"));
 //"Host=localhost;Port=5432;Database=AlcoDB;Username=postgres;Password=boberman"
-
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:3000",
+                                              "http://www.contoso.com"); // add the allowed origins  
+                      });
+});
 builder.Services.AddScoped<IUsersManager, UsersManager>();
 var app = builder.Build();
 
