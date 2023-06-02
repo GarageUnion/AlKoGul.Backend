@@ -15,6 +15,21 @@ builder.Services.AddControllersWithViews()
     .AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:3000"); // add the allowed origins  
+                          policy.AllowAnyOrigin()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+
+
+
+                      });
+});
 builder.Services.AddScoped<IPicturesManager,PicturesManager>();
 builder.Services.AddScoped<IBreadManager, BreadManager>();
 builder.Services.AddScoped<IBreadReviewsManager, BreadReviewManager>();
@@ -30,7 +45,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+app.UseCors(MyAllowSpecificOrigins);
 app.MapControllers();
 
 app.Run();
