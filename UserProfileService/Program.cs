@@ -18,8 +18,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("http://localhost:3000",
-                                              "http://www.contoso.com"); // add the allowed origins  
+                          policy.WithOrigins("http://localhost:3000"); // add the allowed origins  
+                          policy.AllowAnyOrigin();
                       });
 });
 builder.Services.AddScoped<IUsersManager, UsersManager>();
@@ -37,5 +37,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.UseCors();
 app.Run();
