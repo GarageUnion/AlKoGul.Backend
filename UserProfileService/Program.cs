@@ -18,8 +18,13 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("http://localhost:3000"); // add the allowed origins  
-                          policy.AllowAnyOrigin();
+                          policy.WithOrigins("http://localhost:3000") // add the allowed origins  
+                          .AllowAnyMethod;
+                          policy.AllowAnyOrigin()
+                          .AllowAnyHeader;
+
+
+                          
                       });
 });
 builder.Services.AddScoped<IUsersManager, UsersManager>();
