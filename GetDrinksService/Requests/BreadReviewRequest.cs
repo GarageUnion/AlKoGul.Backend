@@ -9,5 +9,6 @@ namespace BreadService
         public int Rate { get; set; }
         public int BreadId { get; set; }
         public int UserId { get; set; }
+        public string UserName { get; set; }
     }
 }

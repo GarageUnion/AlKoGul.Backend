@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace CraftBreadService.Migrations
+namespace PiesService.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -12,23 +12,23 @@ namespace CraftBreadService.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "tblCraftBread",
+                name: "tblRecipes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    IsMachineRequired = table.Column<bool>(type: "boolean", nullable: false),
+                    NecessaryProducts = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
                     Rate = table.Column<double>(type: "double precision", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_tblCraftBread", x => x.Id);
+                    table.PrimaryKey("PK_tblRecipes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "tblCraftBreadServiceReviews",
+                name: "tblRecipeReviews",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -36,33 +36,34 @@ namespace CraftBreadService.Migrations
                     Review = table.Column<string>(type: "text", nullable: false),
                     Rate = table.Column<int>(type: "integer", nullable: false),
                     UserId = table.Column<int>(type: "integer", nullable: false),
-                    BreadId = table.Column<int>(type: "integer", nullable: false)
+                    UserName = table.Column<string>(type: "text", nullable: false),
+                    RecipeId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_tblCraftBreadServiceReviews", x => x.Id);
+                    table.PrimaryKey("PK_tblRecipeReviews", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_tblCraftBreadServiceReviews_tblCraftBread_BreadId",
-                        column: x => x.BreadId,
-                        principalTable: "tblCraftBread",
+                        name: "FK_tblRecipeReviews_tblRecipes_RecipeId",
+                        column: x => x.RecipeId,
+                        principalTable: "tblRecipes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_tblCraftBreadServiceReviews_BreadId",
-                table: "tblCraftBreadServiceReviews",
-                column: "BreadId");
+                name: "IX_tblRecipeReviews_RecipeId",
+                table: "tblRecipeReviews",
+                column: "RecipeId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "tblCraftBreadServiceReviews");
+                name: "tblRecipeReviews");
 
             migrationBuilder.DropTable(
-                name: "tblCraftBread");
+                name: "tblRecipes");
         }
     }
 }

@@ -12,7 +12,7 @@ using UserProfileService;
 namespace UserProfileService.Migrations
 {
     [DbContext(typeof(UsersContext))]
-    [Migration("20230531174214_Initial")]
+    [Migration("20230614143359_Initial")]
     partial class Initial
     {
         /// <inheritdoc />

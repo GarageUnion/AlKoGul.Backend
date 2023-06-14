@@ -33,7 +33,8 @@ namespace PiesService
                     Recipe = reviewedRecipe,
                     Rate = createRequest.Rate,
                     Review = createRequest.Review,
-                    UserId = createRequest.UserId
+                    UserId = createRequest.UserId,
+                    UserName = createRequest.UserName
                 };
                 _dbContext.Reviews.Add(recipeReview);
                 await _dbContext.SaveChangesAsync();

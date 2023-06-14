@@ -14,6 +14,8 @@ namespace PiesService
         public int Rate { get; set; }
         [Required]
         public int UserId { get; set; }
+        [Required]
+        public string UserName { get; set; }
 
         public virtual Recipe Recipe { get; set; }
 

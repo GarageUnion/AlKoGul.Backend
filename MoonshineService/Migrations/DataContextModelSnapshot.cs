@@ -77,11 +77,15 @@ namespace CraftBreadService.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
 
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BreadId");
 
-                    b.ToTable("tblCraftBreadServiceReviews");
+                    b.ToTable("tblCraftBreadReviews");
                 });
 
             modelBuilder.Entity("CraftBreadService.CraftBreadReview", b =>

@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BreadService.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230531141633_Initial")]
+    [Migration("20230614143423_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -78,6 +78,10 @@ namespace BreadService.Migrations
 
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 

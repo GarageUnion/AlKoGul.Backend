@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CraftBreadService
 {
-    [Table("tblCraftBreadServiceReviews")]
+    [Table("tblCraftBreadReviews")]
     public class CraftBreadReview
     {
         [Key]
@@ -14,6 +14,8 @@ namespace CraftBreadService
         public int Rate { get; set; }
         [Required]
         public int UserId { get; set; }
+        [Required]
+        public string UserName { get; set; }
 
         public virtual CraftBread Bread { get; set; }
     }

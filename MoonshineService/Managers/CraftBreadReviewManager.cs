@@ -33,7 +33,8 @@ namespace CraftBreadService
                     Bread = reviewedBread,
                     Rate = createRequest.Rate,
                     Review = createRequest.Review,
-                    UserId = createRequest.UserId
+                    UserId = createRequest.UserId,
+                    UserName = createRequest.UserName
                 };
                 _dbContext.Reviews.Add(breadReview);
                 await _dbContext.SaveChangesAsync();
