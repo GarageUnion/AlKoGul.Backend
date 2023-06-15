@@ -15,7 +15,7 @@ namespace PiesService
             }
             else
             {
-                reviewedRecipe.Rate = (double)(reviews.Sum(x => x.Rate) / (double)reviews.Count);
+                reviewedRecipe.Rate = Math.Round((double)(reviews.Sum(x => x.Rate) / (double)reviews.Count),2);
             }
         }
         public RecipeReviewsManager(DataContext dbContext)

@@ -16,7 +16,7 @@ namespace BreadService
             }
             else
             {
-                reviewedBread.Rate = (double)(reviews.Sum(x => x.Rate) / (double)reviews.Count);
+                reviewedBread.Rate = Math.Round((double)(reviews.Sum(x => x.Rate) / (double)reviews.Count),2);
             }  
         }
         public BreadReviewManager(DataContext dbContext)
