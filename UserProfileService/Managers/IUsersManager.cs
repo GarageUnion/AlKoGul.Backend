@@ -1,4 +1,5 @@
-﻿namespace UserProfileService
+﻿using BreadProjectLibrary;
+namespace UserProfileService
 {
     public interface IUsersManager
     {

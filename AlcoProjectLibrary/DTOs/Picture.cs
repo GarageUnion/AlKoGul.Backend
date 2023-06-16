@@ -1,5 +1,5 @@
-﻿namespace PiesService
-{
+﻿namespace BreadProjectLibrary
+{   
     public class Picture
     {
         public int Id { get; set; }

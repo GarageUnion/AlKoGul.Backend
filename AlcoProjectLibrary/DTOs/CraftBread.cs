@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CraftBreadService
+namespace BreadProjectLibrary
 {
     [Table("tblCraftBread")]
     public class CraftBread

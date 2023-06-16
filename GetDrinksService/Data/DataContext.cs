@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
-
+using BreadProjectLibrary;
 namespace BreadService
 {
     public class DataContext:DbContext

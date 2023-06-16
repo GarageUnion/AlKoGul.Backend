@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CraftBreadService
+namespace BreadProjectLibrary
 {
-    [Table("tblCraftBreadReviews")]
-    public class CraftBreadReview
+    [Table("tblBreadReviews")]
+    public class BreadReview
     {
         [Key]
         public int Id { get; set; }
@@ -16,7 +16,7 @@ namespace CraftBreadService
         public int UserId { get; set; }
         [Required]
         public string UserName { get; set; }
+        public virtual Bread Bread { get; set; }
 
-        public virtual CraftBread Bread { get; set; }
     }
 }

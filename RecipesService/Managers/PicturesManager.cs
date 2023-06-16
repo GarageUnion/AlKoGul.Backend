@@ -1,4 +1,5 @@
-﻿namespace PiesService
+﻿using BreadProjectLibrary;
+namespace PiesService
 {
     public class PicturesManager : IPicturesManager
     {

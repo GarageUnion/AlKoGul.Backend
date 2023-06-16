@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using BreadProjectLibrary;
 namespace BreadService
 {
     public class PicturesManager : IPicturesManager

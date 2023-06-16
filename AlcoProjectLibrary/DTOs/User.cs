@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace UserProfileService
+namespace BreadProjectLibrary
 {
     [Table("tblUsers")]
     public class User

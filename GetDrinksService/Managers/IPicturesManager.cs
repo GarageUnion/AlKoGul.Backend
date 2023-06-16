@@ -1,4 +1,5 @@
-﻿namespace BreadService
+﻿using BreadProjectLibrary;
+namespace BreadService
 {
     public interface IPicturesManager
     {

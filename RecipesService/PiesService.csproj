@@ -24,4 +24,8 @@
     <Folder Include="Images\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AlcoProjectLibrary\BreadProjectLibrary.csproj" />
+  </ItemGroup>
+
 </Project>

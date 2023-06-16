@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.Design;
-
+using BreadProjectLibrary;
 namespace UserProfileService
 {
     public class UsersManager : IUsersManager
